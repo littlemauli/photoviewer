@@ -35,29 +35,22 @@ function randomIndex() {
 
 
 function App() {
-  let [currentUrl, setnewUrl] = React.useState('');
-  currentUrl = PhotoViewer.src
+  const [currentUrl, setnewUrl] = React.useState(ImageUrls[randomIndex()]);
+  
   console.log(currentUrl)
-
-  const handleNewUrl = () => {
-    setnewUrl(PhotoViewer.src = SmallPhotoViewer.src);
-  };
 
   return (
     <div>
-      <h1>React Photo Viewer</h1>
-      <PhotoViewer src={ImageUrls[randomIndex()]} />
-      <h1>All small pictures</h1>
+      <h1 id='main-title'>React Photo Viewer</h1>
+      <PhotoViewer src={currentUrl} />
+      <h2 id= 'second-title'>All small pictures</h2>
+
       {
         ImageUrls.map(el =>
-          <SmallPhotoViewer src={el} />
+          <button key={el} onClick={() => setnewUrl(el)} >
+          <SmallPhotoViewer path={el} />
+          </button>
         )}
-
-      <span>
-        {/* put change state here */}
-        <button onClick={handleNewUrl}></button>
-
-      </span>
     </div>
 
   );

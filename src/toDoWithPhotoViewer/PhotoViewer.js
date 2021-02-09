@@ -4,7 +4,7 @@ import React from "react";  // import React (to provide access to JSX)
 function PhotoViewer(props) {    // declare a new function called 'PhotoViewer'
     return (                
         <div className="main-image" >               
-            <img src={props.src}/>
+            <img src={props.src+'/300'} />
         </div>
     );
 }
@@ -12,9 +12,7 @@ function PhotoViewer(props) {    // declare a new function called 'PhotoViewer'
 function SmallPhotoViewer(props){
     return(
         <div className="little-image">
-            <button>
-           <img src={props.src}/>
-           </button>
+           <img src={props.path+'/70'}/>
         </div>
     )
 }
@@ -29,7 +27,7 @@ function getImageUrls() {
     for (let i = 0; i < 50; i++) {
         if (!brokenImages.includes(i)) {
             const imageNumberString = i.toString().padStart(2, '0');
-            urls.push(`https://picsum.photos/id/6${imageNumberString}/300`)
+            urls.push(`https://picsum.photos/id/6${imageNumberString}`)
         }
     }
 

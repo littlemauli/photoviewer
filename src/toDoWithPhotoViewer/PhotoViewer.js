@@ -2,18 +2,21 @@
 import React from "react";  // import React (to provide access to JSX)
 
 function PhotoViewer(props) {    // declare a new function called 'PhotoViewer'
-    return (                
-        <div className="main-image" >               
-            <img src={props.src+'/300'} />
+    return (
+        <div className="main-image" >
+            <img src={props.src + '/300'} />
         </div>
     );
 }
 
-function SmallPhotoViewer(props){
-    return(
+
+function SmallPhotoViewer(props) {
+    return (
         <div className="little-image">
-           <img src={props.path+'/70'}/>
-        </div>
+            
+            <img className={props.className}  onClick = {props.onClick}  src={props.path + '/70'} />
+            
+        </div >
     )
 }
 
@@ -37,4 +40,4 @@ function getImageUrls() {
 export const ImageUrls = getImageUrls();
 
 
-export {PhotoViewer,SmallPhotoViewer };       // Export the function so that it can be imported in other files
+export { PhotoViewer, SmallPhotoViewer };       // Export the function so that it can be imported in other files

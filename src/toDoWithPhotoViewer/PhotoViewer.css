@@ -3,10 +3,25 @@
 img{
     border-radius: 8px;
 }
-button{
+/* button{
     border-radius: 8px;   
     background-color:aliceblue;
+} */
+
+.small-photo{
+    border: 5px;
+    border-width: 3px;
+    border-color:black;
+    border-style: solid;
 }
+.small-photo-red{
+    border: 5px;
+    border-width: 3px;
+    border-color:red;
+    border-style: solid;
+}
+
+
 #little-image{
     object-fit: cover;
 }

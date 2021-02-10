@@ -24,39 +24,52 @@ import React, { useState } from 'react'
 //   );
 // }
 
-console.log(ImageUrls.length)
-console.log(ImageUrls)
+
+
 
 function randomIndex() {
   let index = Math.floor(Math.random() * ImageUrls.length)
-  console.log(index)
   return index
 }
 
 
 function App() {
   const [currentUrl, setnewUrl] = React.useState(ImageUrls[randomIndex()]);
-  
-  console.log(currentUrl)
+  const [isColored, setIsColored] =React.useState(true)
+
+  function Color(){
+    setIsColored(!isColored)
+  }
 
   return (
     <div>
       <h1 id='main-title'>React Photo Viewer</h1>
       <PhotoViewer src={currentUrl} />
-      <h2 id= 'second-title'>All small pictures</h2>
+      <h2 id='second-title'>All small pictures</h2>
 
       {
         ImageUrls.map(el =>
-          <button key={el} onClick={() => setnewUrl(el)} >
-          <SmallPhotoViewer path={el} />
-          </button>
+          <SmallPhotoViewer   value='self' className={`small-photo ${(currentUrl=== el && !isColored)? 'small-photo-red':''}`}
+           path={el}  key={el} onClick={(e) =>{
+             setnewUrl(el);
+             Color();
+            } 
+          }/>
+
         )}
+
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
     </div>
 
   );
 };
-
-
 
 
 export default App;
